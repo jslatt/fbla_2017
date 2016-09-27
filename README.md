@@ -22,3 +22,26 @@ population of approximately 200,000. Name the FEC. The FEC will be offering a va
 activities of your choice with a snack bar. The FEC will offer party packages to their customers.
 The website should allow customers to check availability for parties and make party
 reservations online. The site should also include a contact page.
+
+---
+
+##Site Map
+
+#### Guest
+- index
+- about
+- services
+- contact
+- make a reservation
+
+#### Logged
+- index
+- about
+- services
+- contact
+- make a reservation
+- {name}
+| Logout
+| Admin (if applicable)
+
+---
