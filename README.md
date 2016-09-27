@@ -1,4 +1,4 @@
-# FBLA 2016-2017 Repo[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 2"
+# FBLA 2016-2017
 Repo for FBLA 2016/17 Events
 
 ##Events
