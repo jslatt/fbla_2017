@@ -1,7 +1,7 @@
 # FBLA 2016-2017
 Repo for FBLA 2016/17 Events
 
-![Image of FBLA Logo](http://c2.swasd.schoolwires.net/cms/lib/PA06000069/Centricity/Domain/264/FBLA-crest.gif)
+![Image of FBLA Logo](http://c2.swasd.schoolwires.net/cms/lib/PA06000069/Centricity/Domain/264/FBLA-crest.gif | width: 4%)
 
 ##Events
 
