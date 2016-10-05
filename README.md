@@ -1,6 +1,8 @@
 # FBLA 2016-2017
 Repo for FBLA 2016/17 Events
 
+![Image of FBLA Logo](http://www.cobbk12.org/Allatoona/FBLA20Logo.gif)
+
 ##Events
 
 ###Coding & Programming 
