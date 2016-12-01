@@ -10,6 +10,8 @@ from log.forms import LoginForm
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'', include('log.urls')),
+    url(r'', include('manager.urls')),
     url(r'^login/$', views.login, {'template_name': 'login.html', 'authentication_form': LoginForm}, name='login'),
-    url(r'^logout/$', views.logout, {'next_page': '/login'}),  
+    url(r'^accounts/login/$', views.login, {'template_name': 'login.html', 'authentication_form': LoginForm}, name='login'),
+    url(r'^logout/$', views.logout, {'next_page': '/login'}),
 ]

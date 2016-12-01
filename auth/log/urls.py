@@ -6,5 +6,6 @@ from . import views
 # We are adding a URL called /home
 urlpatterns = [
     url(r'^$', views.home, name='home'),
-    url(r'^members/', views.members, name='members'),
+    url(r'^settings/', views.settings, name='settings'),
+    url(r'^about/', views.about, name='about'),
 ]
