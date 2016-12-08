@@ -67,7 +67,7 @@
 						 <li><a href="#">Food</a></li>
 					 </ul>
 				 </li>
-				 <li><a href="#" title="Contact">Contact</a></li>
+				 <li><a href="{% url 'contact' %}" title="Contact">Contact</a></li>
 			 </ul>
 			 <ul class="nav navbar-nav navbar-right">
 				 {% if request.user.is_authenticated %}

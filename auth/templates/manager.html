@@ -49,6 +49,14 @@
             <li><a href="/logout">Print Schedule&nbsp;&nbsp;<i class="fa fa-print" aria-hidden="true"></i></a></li>
           </ul>
         </li>
+                     <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Roster&nbsp;<i class="fa fa-users" aria-hidden="true"></i></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#"  data-toggle="modal" data-target="#myModal" >Add Employee&nbsp;&nbsp;<i class="fa fa-user" aria-hidden="true"></i></a></li>
+            <li class="divider"></li>
+            <li><a href="">Manage Employee&nbsp;&nbsp;<i class="fa fa-wrench" aria-hidden="true"></i></a></li>
+          </ul>
+        </li>
 				 <li class="dropdown">
 					 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ user.get_username }}&nbsp;<span class="caret"></span></a>
 					 <ul class="dropdown-menu" role="menu">
@@ -73,33 +81,55 @@
   </div>
 <div class="row">
     <div class="col-md-8">
-        <h4>Add Employee</h4>
-        <input style="margin-bottom: 10px;" type="text" class="form-control" name="firstName" placeholder="First Name">
-        <input style="margin-bottom: 10px;" type="text" class="form-control" placeholder="Last Name">
-        <button type="button" class="btn btn-default" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Add Employee</button>
-        <hr/>
-        <div class="panel panel-default">
-                <div class="panel-heading">
-                    View Employee
-                </div>
-                <div class="panel-body">
-                    <div class="input-group col-xs-6">
-      <input type="number" class="form-control" placeholder="Enter Employee ID">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Edit</button>
-      </span>
-    </div>
+        <h4>Inbox&nbsp;<small>~ Current Time&nbsp;{% now "jS F Y H:i" %}</small></h4>
+    <h6>Unread Messages</h6>
+<div class="list-group">
+   {% for contact in unread_messages %}
+  <a href="#" class="list-group-item">{{ contact.subject }}&nbsp;&nbsp;<span class="badge">{{ contact.subDate }}</span></a>
+      {% endfor %}
+</div>
+    <h6>Read Messages</h6>
+    <div class="list-group">
+   {% for contact in read_messages %}
+  <a href="#" class="list-group-item">{{ contact.subject }}&nbsp;&nbsp;<span class="badge">{{ contact.subDate }}</span></a>
+      {% endfor %}
+</div>
+
+
+
+
+
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add Employee</h4>
+      </div>
+      <div class="modal-body">
+        <form action="/manager/" method="post" >
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Add Employee" class="btn btn-default" aria-haspopup="true" aria-expanded="false" />
+        </form>
+      </div>
     </div>
 
-                </div>
+  </div>
+</div>
 
-        </div>
+</div>
+
 
     <div class="col-md-4">
     <h4>Current Employees<span style="float: right;margin-right: 15px;" class="badge">ID</span> </h4>
          <div class="list-group">
       {% for employee in all_employees %}
-  <a href="#" class="list-group-item">{{ employee.firstName }}&nbsp;{{ employee.lastName }}&nbsp;<span class="badge">{{ employee.id }}</span></a>
+  <a href="edit/{{ employee.id }}" class="list-group-item">{{ employee.firstName }}&nbsp;{{ employee.lastName }}&nbsp;<span class="badge">{{ employee.id }}</span></a>
       {% endfor %}
   </div>
     </div>
@@ -179,11 +209,14 @@
 
  <!-- Core Scripts - Include with every page -->
  <script src="{% static 'js/jquery.min.js' %}" onload="window.$ = window.jQuery = module.exports;"></script>
-
  <script src="{% static 'js/bootstrap.min.js' %}"></script>
  <script src="{% static 'js/script.js' %}"></script>
+     <script type="text/javascript">
+    $(function () {
+        $("[rel='tooltip']").tooltip();
+    });
+</script>
  <script src="https://use.fontawesome.com/14b421928d.js"></script>
-
 
      <script>
 var d = new Date();

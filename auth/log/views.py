@@ -11,13 +11,12 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 def home(request):
     return render(request,"home.html")
 
+
 def about(request):
     return render(request,"about.html")
+
 
 @login_required(login_url="login/")
 def settings(request):
     return render(request,"settings.html")
 
-#@user_passes_test(lambda u: u.is_superuser)
-#def manager(request):
-#    return render(request,"manager.html")

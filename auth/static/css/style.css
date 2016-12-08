@@ -6,3 +6,6 @@
 .sch td {
   text-align: center;
 }
+.errorlist {
+    display: none !important;
+}
