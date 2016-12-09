@@ -1,6 +1,8 @@
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
+from django.shortcuts import get_object_or_404
+from django.views.generic.detail import DetailView
 from .models import employee
 from .forms import addEmployee
 from contact.models import contact
@@ -12,7 +14,7 @@ def manager(request):
     form = addEmployee(request.POST)
     all_employees = employee.objects.all()
     read_messages = contact.objects.all()
-    unread_messages = contact.objects.filter(read="False")
+    unread_messages = contact.objects.filter(read="True")
     context = {
         'all_employees': all_employees,
         'form': form,
@@ -32,5 +34,25 @@ def manager(request):
     return HttpResponse(template.render(context, request))
 
 
-def employeeDetail(request, employee_id):
-    return HttpResponse(str(employee_id))
+# add security
+class employeeDetail(DetailView):
+    model = employee
+    template_name = "employeeDetail.html"
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def inbox(request):
+    template = loader.get_template('managerInbox.html')
+    read_messages = contact.objects.filter(read="False")
+    unread_messages = contact.objects.filter(read="True")
+    context = {
+        'read_messages': read_messages,
+        'unread_messages': unread_messages,
+    }
+    return HttpResponse(template.render(context, request))
+
+
+# add security
+class messageDetail(DetailView):
+    model = contact
+    template_name = "contactDetail.html"

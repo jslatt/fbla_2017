@@ -40,6 +40,7 @@
 			 </ul>
 			 <ul class="nav navbar-nav navbar-right">
 				 {% if request.user.is_authenticated %}
+                 <li><a href="{% url 'inbox' %}" title="Inbox" >Inbox&nbsp;<i class="fa fa-inbox" aria-hidden="true"></i></a> </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Schedule&nbsp;<i class="fa fa-calendar-o" aria-hidden="true"></i></a>
           <ul class="dropdown-menu" role="menu">
@@ -54,7 +55,7 @@
           <ul class="dropdown-menu" role="menu">
             <li><a href="#"  data-toggle="modal" data-target="#myModal" >Add Employee&nbsp;&nbsp;<i class="fa fa-user" aria-hidden="true"></i></a></li>
             <li class="divider"></li>
-            <li><a href="">Manage Employee&nbsp;&nbsp;<i class="fa fa-wrench" aria-hidden="true"></i></a></li>
+            <li><a  href="#"  data-toggle="modal" data-target="#manageEmployee">Manage Employee&nbsp;&nbsp;<i class="fa fa-wrench" aria-hidden="true"></i></a></li>
           </ul>
         </li>
 				 <li class="dropdown">
@@ -82,17 +83,10 @@
 <div class="row">
     <div class="col-md-8">
         <h4>Inbox&nbsp;<small>~ Current Time&nbsp;{% now "jS F Y H:i" %}</small></h4>
-    <h6>Unread Messages</h6>
 <div class="list-group">
    {% for contact in unread_messages %}
-  <a href="#" class="list-group-item">{{ contact.subject }}&nbsp;&nbsp;<span class="badge">{{ contact.subDate }}</span></a>
-      {% endfor %}
-</div>
-    <h6>Read Messages</h6>
-    <div class="list-group">
-   {% for contact in read_messages %}
-  <a href="#" class="list-group-item">{{ contact.subject }}&nbsp;&nbsp;<span class="badge">{{ contact.subDate }}</span></a>
-      {% endfor %}
+  <a href="/manager/inbox/{{ contact.id }}" class="list-group-item"><strong>{{ contact.name }}</strong>&nbsp;-&nbsp;{{ contact.subject }}&nbsp;&nbsp;<span class="badge">{{ contact.subDate }}</span></a>
+    {% endfor %}
 </div>
 
 
@@ -126,6 +120,29 @@
 
 
     <div class="col-md-4">
+
+
+        <div id="manageEmployee" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Manage Employee</h4>
+      </div>
+      <div class="modal-body">
+          Select an Employee to Manage
+        {% for employee in all_employees %}
+  <a href="edit/{{ employee.id }}" class="list-group-item"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;{{ employee.firstName }}&nbsp;{{ employee.lastName }}</a>
+      {% endfor %}
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
     <h4>Current Employees<span style="float: right;margin-right: 15px;" class="badge">ID</span> </h4>
          <div class="list-group">
       {% for employee in all_employees %}

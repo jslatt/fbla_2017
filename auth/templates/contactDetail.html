@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% block content %}
+    {% load staticfiles %}
+
+    <div class="container">
+        <div class="row">
+
+            <h1>Message from {{ contact.name }}</h1>
+            <h4>Subject: {{ contact.subject }}</h4>
+
+        </div>
+        <hr>
+        <div class="row">
+             <div class="panel panel-default">
+                 <div class="panel-heading">Message //&nbsp;<a href="mailto:{{ contact.email }}" title="Email">{{ contact.email }}</a></div>
+              <div class="panel-body">
+               <p>{{ contact.message }}</p>
+
+              </div>
+            </div>
+            <a href="mailto:{{ contact.email }}" type="button" class="btn btn-sm btn-default" aria-expanded="false"><i class="fa fa-reply" aria-hidden="true"></i>&nbsp;Email {{ contact.name }}</a>
+            <button type="button" class="btn btn-sm btn-default" aria-expanded="false"><i class="fa fa-check" aria-hidden="true"></i>&nbsp;Mark as Read</button>
+            <a href="/manager/inbox" type="button" class="btn btn-sm btn-primary" aria-expanded="false"><i class="fa fa-back" aria-hidden="true"></i>&nbsp;Return to Inbox</a>
+        </div>
+
+    </div>
+{% endblock %}
+
+

@@ -1,7 +1,11 @@
 from __future__ import unicode_literals
-
 from django.db import models
 from datetime import date
+import os
+
+
+def get_image_path(instance, filename):
+    return os.path.join('photos', str(instance.id), filename)
 
 
 class employee(models.Model):

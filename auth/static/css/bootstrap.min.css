@@ -1419,7 +1419,7 @@
     }
 
     a {
-        color: #ecf0f1;
+        color: #2c3e50;
         text-decoration: none
     }
 
@@ -6814,9 +6814,11 @@
     
     .footer {
 
-        width: 100%;
-        /* Set the fixed height of the footer here */
-        height: 60px;
+        position: absolute;
+          bottom: 0;
+          width: 100%;
+          /* Set the fixed height of the footer here */
+          height: 60px;
     }
 
 
