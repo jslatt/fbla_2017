@@ -156,66 +156,28 @@
 <div class="row">
     <h2>Schedule&nbsp;<i class="fa fa-calendar-o" aria-hidden="true"></i>
     </h2>
-    <div class="panel panel-default">
+        <div class="panel panel-default">
   <!-- Default panel contents -->
   <div class="panel-heading">Schedule for&nbsp;<span id="date"></span></div>
+            <table class="table sch">
 
-  <!-- Table -->
-
-  <table class="table sch">
     <tr>
         <td></td>
-        <td>8:00</td>
-        <td>9:00</td>
-        <td>10:00</td>
-        <td>11:00</td>
-        <td>12:00</td>
-        <td>13:00</td>
-        <td>14:00</td>
-        <td>15:00</td>
-        <td>16:00</td>
-        <td>17:00</td>
-        <td>18:00</td>
-        <td>19:00</td>
-        <td>20:00</td>
-        <td>21:00</td>
-        <td>22:00</td>
+        <td>MONDAY</td>
+        <td>TUESDAY</td>
+        <td>WEDNSDAY</td>
+        <td>THURSDAY</td>
+        <td>FRIDAY</td>
+        <td>STURDAY</td>
+        <td>SUNDAY</td>
     </tr>
+    {% for schedule in schedule %}
       <tr>
-          <td>FirstLast</td>
+          <td>{{ schedule.employeeWorking }}</td>
           <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td class="info">FFFF</td>
-        <td class="info">FFFF</td>
-        <td class="info">FFFF</td>
-        <td class="warning">BBBB</td>
-        <td class="info">FFFF</td>
-        <td class="info">FFFF</td>
-        <td class="info">FFFF</td>
-        <td></td>
-        <td></td>
-        <td></td>
       </tr>
-      <tr>
-          <td>FirstLast</td>
-          <td class="info">OOOO</td>
-          <td class="info">OOOO</td>
-          <td class="warning">BBBB</td>
-          <td class="info">OOOO</td>
-          <td class="info">OOOO</td>
-          <td class="info">OOOO</td>
-          <td class="info">OOOO</td>
-         <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
+      {% endfor %}
+
   </table>
 </div>
 </div>
