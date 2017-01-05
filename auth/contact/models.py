@@ -10,7 +10,7 @@ class contact(models.Model):
     message = models.TextField(max_length=1000)
     subject = models.CharField(max_length=140, default="Customer Message")
     subDate = models.DateTimeField(default=datetime.now, blank=True)
-    read = models.BooleanField(default=True)
+    read = models.BooleanField(default=True, blank=True)
 
     def __str__(self):
         return self.name

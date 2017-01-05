@@ -1,0 +1,222 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+ <title>Saya Management</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicons/apple-touch-icon.png' %}">
+<link rel="icon" type="image/png" href="{% static 'favicons/favicon-32x32.png' %}" sizes="32x32">
+<link rel="icon" type="image/png" href="{% static 'favicons/favicon-16x16.png' %}" sizes="16x16">
+<link rel="manifest" href="{% static 'favicons/manifest.json' %}">
+<link rel="mask-icon" href="{% static 'favicons/safari-pinned-tab.svg' %}" color="#5bbad5">
+<meta name="theme-color" content="#ffffff">
+
+ <!-- Core CSS - Include with every page -->
+ <link href="{% static 'css/bootstrap.min.css' %}?v=00003" rel="stylesheet">
+ <link href="{% static 'css/style.css' %}?v=00002" rel="stylesheet">
+</head>
+
+<body>
+
+ <nav class="navbar navbar-default container">
+	 <div class="container-fluid">
+		 <div class="navbar-header">
+			 <button type="button" style="color: #2c3e50" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				 <span class="sr-only">Toggle navigation</span>
+				 <span class="icon-bar"></span>
+				 <span class="icon-bar"></span>
+				 <span class="icon-bar"></span>
+			 </button>
+		 </div>
+
+		 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			 <ul class="nav navbar-nav">
+				 <li><a href="{% url 'home' %}" title="Home"><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;Back to Site</a></li>
+			 </ul>
+			 <ul class="nav navbar-nav navbar-right">
+				 {% if request.user.is_authenticated %}
+                 <li><a href="{% url 'inbox' %}" title="Inbox" >Inbox&nbsp;<i class="fa fa-inbox" aria-hidden="true"></i></a> </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Schedule&nbsp;<i class="fa fa-calendar-o" aria-hidden="true"></i></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/admin">Create&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"></i></a></li>
+            <li class="divider"></li>
+            <li><a href="/logout">View Schedule&nbsp;&nbsp;<i class="fa fa-search" aria-hidden="true"></i></a></li>
+            <li><a href="/logout">Print Schedule&nbsp;&nbsp;<i class="fa fa-print" aria-hidden="true"></i></a></li>
+          </ul>
+        </li>
+                     <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Roster&nbsp;<i class="fa fa-users" aria-hidden="true"></i></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#"  data-toggle="modal" data-target="#myModal" >Add Employee&nbsp;&nbsp;<i class="fa fa-user" aria-hidden="true"></i></a></li>
+            <li class="divider"></li>
+            <li><a  href="#"  data-toggle="modal" data-target="#manageEmployee">Manage Employee&nbsp;&nbsp;<i class="fa fa-wrench" aria-hidden="true"></i></a></li>
+          </ul>
+        </li>
+				 <li class="dropdown">
+					 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ user.get_username }}&nbsp;<span class="caret"></span></a>
+					 <ul class="dropdown-menu" role="menu">
+						 {% if request.user.is_superuser %}
+						 <li><a href="/admin">Admin&nbsp;&nbsp;<i class="fa fa-shield" aria-hidden="true"></i></a></li>{% endif %}
+						 <li><a href="/settings">Settings&nbsp;&nbsp;<i class="fa fa-cogs" aria-hidden="true"></i></a></li>
+						 <li class="divider"></li>
+						 <li><a href="/logout">Logout&nbsp;&nbsp;<i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
+					 </ul>
+				 </li>
+				 {% endif %} {% if not request.user.is_authenticated %}
+				 <li><a href="/login">Login&nbsp;<i class="fa fa-sign-in" aria-hidden="true"></i></a></li>{% endif %}
+			 </ul>
+		 </div>
+	 </div>
+ </nav>
+<div class="container">
+  <div class="row">
+    <div class="page-header">
+          <h1>Employee Management</h1>
+    </div>
+  </div>
+<div class="row">
+       <div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Schedule</div>
+            <table class="table sch build">
+
+    <tr>
+        <td></td>
+        <td>MONDAY</td>
+        <td>TUESDAY</td>
+        <td>WEDNSDAY</td>
+        <td>THURSDAY</td>
+        <td>FRIDAY</td>
+        <td>STURDAY</td>
+        <td>SUNDAY</td>
+    </tr>
+     {% for employee in all_employees %}
+      <tr>
+          <td>{{ employee.firstName }}&nbsp;{{ employee.lastName }}</td>
+          <td class="monday day"><center><i class="fa fa-calendar-plus-o" aria-hidden="true"></i></center></td>
+          <td class="tuesday day"><center><i class="fa fa-calendar-plus-o" aria-hidden="true"></i></center></td>
+          <td class="wednsday day"><center><a  href="#addBuild"  data-toggle="modal" data-target="#addBuild"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i></a></center></td>
+          <td class="thursday day"><center><i class="fa fa-calendar-plus-o" aria-hidden="true"></i></center></td>
+          <td class="friday day"><center><i class="fa fa-calendar-plus-o" aria-hidden="true"></i></center></td>
+          <td class="saturday day"><center><i class="fa fa-calendar-plus-o" aria-hidden="true"></i></center></td>
+          <td class="sunday day"><center><i class="fa fa-calendar-plus-o" aria-hidden="true"></i></center></td>
+      </tr>
+                {% endfor %}
+
+  </table>
+</div>
+</div>
+
+
+
+
+
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add Employee</h4>
+      </div>
+      <div class="modal-body">
+        <form action="/manager/" method="post" >
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Add Employee" class="btn btn-default" aria-haspopup="true" aria-expanded="false" />
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+
+    <div class="col-md-4">
+
+
+        <div id="manageEmployee" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Manage Employee</h4>
+      </div>
+      <div class="modal-body">
+          Select an Employee to Manage
+        {% for employee in all_employees %}
+  <a href="edit/{{ employee.id }}" class="list-group-item"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;{{ employee.firstName }}&nbsp;{{ employee.lastName }}</a>
+      {% endfor %}
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+           <div id="addBuild" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Manage Employee</h4>
+      </div>
+      <div class="modal-body">
+          Select an Employee to Manage
+        {% for employee in all_employees %}
+  <a href="edit/{{ employee.id }}" class="list-group-item"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;{{ employee.firstName }}&nbsp;{{ employee.lastName }}</a>
+      {% endfor %}
+      </div>
+    </div>
+
+  </div>
+</div>
+    </div>
+
+ {% block javascript %}
+
+ <!-- Core Scripts - Include with every page -->
+ <script src="{% static 'js/jquery.min.js' %}" onload="window.$ = window.jQuery = module.exports;"></script>
+ <script src="{% static 'js/bootstrap.min.js' %}"></script>
+ <script src="{% static 'js/script.js' %}/?v=0001"></script>
+     <script src="{% static 'js/build.js' %}"></script>
+     <script type="text/javascript">
+    $(function () {
+        $("[rel='tooltip']").tooltip();
+    });
+</script>
+ <script src="https://use.fontawesome.com/14b421928d.js"></script>
+
+     <script>
+var d = new Date();
+document.getElementById("date").innerHTML = d.toDateString();
+</script>
+ {% endblock %}
+ {% block footer %}
+
+ <footer class="footer">
+       <div class="container">
+         <p class="text-muted">Created with&nbsp;<i class="fa fa-code" aria-hidden="true"></i>&nbsp;by James Slattery   |   &copy; 2016</p>
+       </div>
+     </footer>
+ {% endblock %}
+
+</body>
+
+</html>

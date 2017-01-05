@@ -46,11 +46,21 @@ class employeeDetail(DetailView):
 @user_passes_test(lambda u: u.is_superuser)
 def inbox(request):
     template = loader.get_template('managerInbox.html')
-    read_messages = contact.objects.filter(read="False")
-    unread_messages = contact.objects.filter(read="True")
+    read_messages = contact.objects.filter(read=False)
+    unread_messages = contact.objects.filter(read=True)
     context = {
         'read_messages': read_messages,
         'unread_messages': unread_messages,
+    }
+    return HttpResponse(template.render(context, request))
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def build(request):
+    template = loader.get_template('build.html')
+    all_employees = employee.objects.all()
+    context = {
+        'all_employees': all_employees,
     }
     return HttpResponse(template.render(context, request))
 

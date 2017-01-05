@@ -9,3 +9,10 @@
 .errorlist {
     display: none !important;
 }
+.build {
+
+}
+.monday:hover, .tuesday:hover, .wednsday:hover, .thursday:hover, .friday:hover, .saturday:hover, .sunday:hover {
+    background-color: #ecf0f1;
+    cursor: pointer;
+}

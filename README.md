@@ -5,7 +5,7 @@ Repo for FBLA 2016/17 Events
 
 ##Events
 
-###Coding & Programming 
+###Coding & Programming
 2017 NLC TOPIC
 Develop a database program to manage the general operations of a Family Entertainment
 Center (FEC). Give the FEC a name. The program must allow the user to complete at minimum
@@ -27,23 +27,5 @@ reservations online. The site should also include a contact page.
 
 ---
 
-##Site Map
-
-#### Guest
-- index
-- about
-- services
-- contact
-- make a reservation
-
-#### Logged
-- index
-- about
-- services
-- contact
-- make a reservation
-- {name}
-| Logout
-| Admin (if applicable)
 
 ---

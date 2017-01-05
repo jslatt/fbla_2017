@@ -6820,6 +6820,11 @@
           /* Set the fixed height of the footer here */
           height: 60px;
     }
+    .footerLong {
+            width: 100%;
+            /* Set the fixed height of the footer here */
+            height: 60px;
+}
 
 
     .panel-default>.panel-heading {

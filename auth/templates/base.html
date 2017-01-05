@@ -68,6 +68,7 @@
 					 </ul>
 				 </li>
 				 <li><a href="{% url 'contact' %}" title="Contact">Contact</a></li>
+                 <li><a href="" title="Contact">Packages</a></li>
 			 </ul>
 			 <ul class="nav navbar-nav navbar-right">
 				 {% if request.user.is_authenticated %}
@@ -84,7 +85,7 @@
 					 </ul>
 				 </li>
 				 {% endif %} {% if not request.user.is_authenticated %}
-				 <li><a href="/login">Login&nbsp;<i class="fa fa-sign-in" aria-hidden="true"></i></a></li>{% endif %}
+                 <li><a href="/login">Login&nbsp;<i class="fa fa-sign-in" aria-hidden="true"></i></a></li>{% endif %}
 			 </ul>
 		 </div>
 	 </div>
@@ -108,7 +109,7 @@
 
  <footer class="footer">
        <div class="container">
-         <p class="text-muted">Created with&nbsp;<i class="fa fa-code" aria-hidden="true"></i>&nbsp;by James Slattery   |   &copy; 2016</p>
+         <p class="text-muted">Created with&nbsp;<i class="fa fa-code" aria-hidden="true"></i>&nbsp;by James Slattery   |   &copy; 2017</p>
        </div>
      </footer>
  {% endblock %}
