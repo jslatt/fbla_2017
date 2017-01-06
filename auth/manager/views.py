@@ -13,8 +13,6 @@ def manager(request):
     template = loader.get_template('manager.html')
     form = addEmployee(request.POST)
     all_employees = employee.objects.all()
-    from .models import schedule
-    schedule = schedule.objects.all()
     read_messages = contact.objects.all()
     unread_messages = contact.objects.filter(read="True")
     context = {
@@ -22,7 +20,6 @@ def manager(request):
         'form': form,
         'read_messages': read_messages,
         'unread_messages': unread_messages,
-        'schedule': schedule,
     }
     if request.method == 'POST':
         form = addEmployee(request.POST)
