@@ -12,3 +12,4 @@ class addEmployee(forms.ModelForm):
             'lastName': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Last Name'}),
             'wage': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Wage'}),}
 
+

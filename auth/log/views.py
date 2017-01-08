@@ -2,14 +2,13 @@
 #log/views.py
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required, user_passes_test
-
-# Create your views here.
-# this login required decorator is to not allow to any
-# view without authenticating
+from django.template import loader
+from django.http import HttpResponse, HttpResponseRedirect
 
 
 def home(request):
-    return render(request,"home.html")
+    template= loader.get_template('home.html')
+    return HttpResponse(template.render(request))
 
 
 def about(request):

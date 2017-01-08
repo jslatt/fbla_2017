@@ -3,14 +3,18 @@ from .models import reserve
 
 
 class reserveForm(forms.ModelForm):
+    PACKAGES = {
+        ('MA', 'Movie Adict -- $50'),
+        ('FP', 'Family Plan -- $100'),
+        ('LN', 'Lazer Night - $80'),
+    }
+
+    package = forms.ChoiceField(choices=PACKAGES, required=True)
 
     class Meta:
         model = reserve
-        fields = ['package', 'time', 'comments', ]
-        CHOICES = (('Option 1', 'Option 1'), ('Option 2', 'Option 2'),)
+        fields = ['package', 'email', 'time', 'comments', ]
         widgets = {
-            'package': forms.ChoiceField(choices=CHOICES, attrs={'class': 'form-control', }),
-            'time': forms.DateTimeField(attrs={'class': 'form-control', }),
-            'comments': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Comments'}),
-        }
-
+            'time': forms.DateInput(attrs={'class': 'form-control datepicker pwidget', 'placeholder': "Time"}),
+            'email': forms.TextInput(attrs={'class': 'form-control', 'placeholder': "Email"}),
+            'comments': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Comments'}), }
