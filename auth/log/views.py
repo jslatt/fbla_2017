@@ -7,8 +7,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 
 
 def home(request):
-    template= loader.get_template('home.html')
-    return HttpResponse(template.render(request))
+    return render(request, "home.html")
 
 
 def about(request):
