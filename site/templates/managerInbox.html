@@ -1,0 +1,29 @@
+{% extends 'base.html' %} {% block content %}
+    {% load staticfiles %}
+
+    <div class="container">
+        <div class="row">
+          <div class="page-header"><h1>All Messages</h1></div>
+            <div class="row">
+                <h4>Unread Messages</h4>
+                <div class="list-group">
+                   {% for contact in unread_messages %}
+                  <a href="/manager/inbox/{{ contact.id }}" class="list-group-item"><strong>{{ contact.name }}</strong>&nbsp;-&nbsp;{{ contact.subject }}&nbsp;&nbsp;<span class="badge">{{ contact.subDate }}</span></a>
+                {% endfor %}
+                    </div>
+            </div>
+            <div class="row">
+                <h4>Read Messages</h4>
+                <div class="list-group">
+                   {% for contact in read_messages %}
+                  <a href="/manager/inbox/{{ contact.id }}" class="list-group-item"><strong>{{ contact.name }}</strong>&nbsp;-&nbsp;{{ contact.subject }}&nbsp;&nbsp;<span class="badge">{{ contact.subDate }}</span></a>
+                {% endfor %}
+            </div>
+                </div>
+
+        </div>
+
+    </div>
+{% endblock %}
+
+

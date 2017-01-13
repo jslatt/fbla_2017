@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block content %}
+    {% load staticfiles %}
+
+    <div class="container">
+  <div class="row">
+    <div class="page-header"><h1>Contact Us</h1></div>
+    <div class="well"><h5><strong>Thanks for considering or attending Saya Fun Center! </strong></h5>Please if you have any criticisms, ideas for how we can improve, questions, or simply comments about your experience, do not hesitate to let us know!</div>
+  </div>
+    <div class="row">
+        <div class="col-lg-7">
+            <form  method="post" >
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Submit" class="btn btn-default" aria-haspopup="true" aria-expanded="false" />
+        </form>
+        </div>
+        <div class="col-lg-5">
+            <div class="well">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d104325.80926881592!2d-101.87498001679808!3d35.201946785273364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x870148d4b245cf03%3A0xd0f3d11c6836d2af!2sAmarillo%2C+TX!5e0!3m2!1sen!2sus!4v1484288779434" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>            </div>
+
+        </div>
+    </div>
+    </div>
+{% endblock %}
