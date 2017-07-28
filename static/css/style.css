@@ -1,0 +1,43 @@
+.logoUp {
+	position: relative;
+	top: -10px;
+	left: 0px;
+}
+.sch td {
+	text-align: center;
+}
+body {
+	overflow-x: hidden;
+}
+.colorBar {
+	background: #B71C1C;
+	width: 100%;
+	height: 5px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.errorlist {
+		display: none !important;
+}
+.build {
+
+}
+.monday:hover, .tuesday:hover, .wednsday:hover, .thursday:hover, .friday:hover, .saturday:hover, .sunday:hover {
+		background-color: #ecf0f1;
+		cursor: pointer;
+}
+
+.input-group.date .input-group-addon {
+	cursor: pointer;
+}
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}

@@ -1,0 +1,73 @@
+{% extends 'base.html' %}{% block content %}
+{% load staticfiles %}
+<div class="container">
+<div class="row">
+  <div class="col-md-12">
+    <div class="page-header">
+      <h1>Come to our location in Amarillo, Texas for family fun!</h1>
+    </div>
+  </div>
+</div>
+  <div class="row">
+  <div class="col-md-8">
+    <p style="font-size: 2em;">Saya is well equipped to keep a birthday party, or just a family looking for amusement well entertained for as long as they’re here. We have a slew of possible activities for attendees such as an arcade, bowling, laser tag, a movie theater, and a fantastic food court! </p>
+    <div class="col-md-6">
+      <img src="/{% static 'img/funcenter/prizeWall.jpg' %}" alt="Prize Wall" width="100%">
+      <a href="https://i3itco.in/dark/logo.svg" class="btn btn-primary" title="Download Marketing Package"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;Download Marketing Package</a>
+
+    </div>
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-4">
+      <h3>Services Used</h3>
+      <div class="row"><i class="fa fa-linux" aria-hidden="true"></i>&nbsp;Ubuntu 14.04 LTS</div>
+      <div class="row"><i class="fa fa-server" aria-hidden="true"></i>&nbsp;Nginx Web Server</div>
+      <div class="row"><i class="fa fa-database" aria-hidden="true"></i>&nbsp;SQLiteDB</div>
+      <div class="row"><i class="fa fa-file-code-o" aria-hidden="true"></i>&nbsp;Python</div>
+      <div class="row"><i class="fa fa-html5" aria-hidden="true"></i>&nbsp;HTML5</div>
+      <div class="row"><i class="fa fa-css3" aria-hidden="true"></i>&nbsp;CSS3</div>
+      <div class="row"><i class="fa fa-cubes" aria-hidden="true"></i>&nbsp;Javascript, jQuery, jQuery UI</div>
+      <div class="row"><i class="fa fa-font-awesome" aria-hidden="true"></i>&nbsp;Fontawesome Icons</div>
+      <div class="row"><i class="fa fa-code" aria-hidden="true"></i>&nbsp;Django Web Framework</div>
+      <div class="row"><i class="fa fa-dashboard" aria-hidden="true"></i>&nbsp;Javascript, jQuery, jQuery UI</div>
+      <br/>
+      <div class="row"><a href="#" class="btn btn-info"  data-toggle="modal" data-target="#credits" title="Image Sources">Image Sources</a></div>
+    </div>
+  </div>
+  <div class="col-md-4">
+                          <a class="twitter-timeline"  href="https://twitter.com/hashtag/SayaEntertainment" data-widget-id="814985366654418944">#SayaEntertainment Tweets</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+  </div>
+</div>
+<div id="credits" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Image Credits</h4>
+      </div>
+      <div class="modal-body">
+        http://www.fun-center.com/_upload/images/edmonds/home_rotator/Prize%20wall.jpg
+        http://www.fun-center.com/_upload/images/edmonds/home_rotator/GolfRotator_605x260.jpg
+        http://www.fun-center.com/_upload/images/edmonds/home_rotator/KartsRotator_605x260.jpg
+        http://www.fun-center.com/_upload/images/edmonds/home_rotator/LazerTagRotator_605x260.jpg
+        https://benning.armymwr.com/files/9814/6591/7565/BenningFEC2.jpg
+        https://benning.armymwr.com/files/8314/6591/7571/BenningFEC4.jpg
+        https://benning.armymwr.com/files/2114/6591/7562/FEC.jpg
+        http://qcfec.com/wp-content/uploads/2015/04/Laser-Tag-10-Moline-IL-650x450.jpg
+        http://qcfec.com/wp-content/uploads/2015/04/Laser-Tag-Moline-IL-433x300.jpg
+        https://sociorocketnewsen.files.wordpress.com/2013/10/st-8.jpg
+        http://s3.amazonaws.com/digitaltrends-uploads-prod/2015/07/Movie-theater-screen.jpg
+        http://staging.hollywoodtheatre.org/wp-content/uploads/2011/06/MainTheater_Back-pano.jpg
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div>
+{% endblock %}
